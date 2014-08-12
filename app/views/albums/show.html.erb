@@ -18,8 +18,14 @@
         </div>
     </div>
   <% end %>
-  <div class="clear"></div>
 </div>
+<div class="clear"></div>
+
+<%= form_for Photo.new do |f| %>
+  <%= f.hidden_field :album_id, value: @album.id %>
+  <%= f.label :image, "Upload photos:" %>
+  <%= f.file_field :image, multiple: true, name: "photo[image]" %>
+<% end %>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
