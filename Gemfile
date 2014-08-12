@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 
 gem 'carrierwave'
 gem "rmagick"
+
+gem 'jquery.fileupload-rails'
