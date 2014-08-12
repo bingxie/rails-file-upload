@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -41,4 +41,7 @@ gem 'spring',        group: :development
 gem 'carrierwave'
 gem "rmagick"
 
-gem 'jquery.fileupload-rails'
+# gem 'jquery.fileupload-rails'
+# gem 'jquery-fileupload-rails'
+
+gem 'rails-assets-blueimp-file-upload'
