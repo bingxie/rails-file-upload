@@ -5,19 +5,8 @@
   <%= @album.name %>
 </p>
 
-<div class="photos">
-  <% @album.photos.each do |photo| %>
-    <div class="photo">
-      <%= link_to (image_tag photo.image_url(:thumb).to_s), photo_path(photo) %>
-        <div class="name">
-          <%= photo.name %>
-        </div>
-        <div class="actions">
-          <%= link_to 'edit', edit_photo_path(photo) %> |
-          <%= link_to 'remove', photo, confirm: 'Are you sure?', method: :delete %>
-        </div>
-    </div>
-  <% end %>
+<div class="photos" id="photos">
+  <%= render @album.photos %>
 </div>
 <div class="clear"></div>
 
