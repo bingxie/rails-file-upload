@@ -41,7 +41,11 @@ gem 'spring',        group: :development
 gem 'carrierwave'
 gem "rmagick"
 
-# gem 'jquery.fileupload-rails'
-# gem 'jquery-fileupload-rails'
+# gem 'jquery.fileupload-rails' # 5.41.0
+gem 'jquery-fileupload-rails'  # 5.21
 
-gem 'rails-assets-blueimp-file-upload'
+# gem 'rails-assets-blueimp-file-upload'   # jQuery File Upload Plugin 5.40.1
+
+group :development do
+  gem 'quiet_assets'
+end

@@ -3,8 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#new_photo').fileupload(
-    add: (e, data) ->
-      data.context = $('<p/>').text('Uploading...').appendTo(document.body)
-      data.submit()
-  )
+  $('#new_photo').fileupload()
