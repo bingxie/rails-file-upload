@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-fileupload/basic
+//= require blueimp-file-upload/vendor/jquery.ui.widget
+//= require blueimp-file-upload/jquery.iframe-transport
+//= require blueimp-file-upload/jquery.fileupload
 //= require turbolinks
 //= require_tree .
