@@ -5,33 +5,44 @@
 $ ->
   $('#new_photo').fileupload
     dataType: "script"
-    autoUpload: true
-    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
-    maxFileSize: 1024 * 1024
-    messages:
-      maxFileSize: 'File exceeds maximum allowed size of 1MB',
+  #   autoUpload: true
+  #   acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+  #   maxFileSize: 1024 * 1024
+  #   messages:
+  #     maxFileSize: 'File exceeds maximum allowed size of 1MB',
 
-  $('#new_photo').on 'fileuploadadd', (evt, data) ->
-    $this = $(this)
-    validation = data.process ->
-      $this.fileupload('process', data)
+  # $('#new_photo').on 'fileuploadadd', (evt, data) ->
+  #   $this = $(this)
+  #   validation = data.process ->
+  #     $this.fileupload('process', data)
 
-    validation.done ->
-      data.submit()
+  #   validation.done ->
+  #     data.submit()
 
-    validation.fail (data) ->
-      console.log('Upload error: ' + data.files[0].error)
+  #   validation.fail (data) ->
+  #     console.log('Upload error: ' + data.files[0].error)
 
-    # add: (e, data) ->
-    #   types = /(\.|\/)(gif|jpe?g|png)$/i
-    #   file = data.files[0]
-    #   if types.test(file.type) || types.test(file.name)
-    #     data.context = $(tmpl("template-upload", file))
-    #     $('#new_photo').append(data.context)
-    #     data.submit()
-    #   else
-    #     alert("#{file.name} is not a gif, jpeg, or png image file")
-    # progress: (e, data) ->
-    #   if data.context
-    #     progress = parseInt(data.loaded / data.total * 100, 10)
-    #     data.context.find('.bar').css('width', progress + '%')
+    add: (e, data) ->
+      uploadErrors = [];
+      types = /(\.|\/)(gif|jpe?g|png)$/i
+      file = data.files[0]
+
+      if file.type.length && !(types.test(file.type) || types.test(file.name))
+        alert('Image file type is not an accepted type.')
+        uploadErrors.push('file type error')
+
+      if file.size > 5000000
+        alert('Image file size if too big.')
+        uploadErrors.push('file size error')
+
+      if uploadErrors.length == 0
+        data.context = $(tmpl("template-upload", file))
+        $('#new_photo').append(data.context)
+        jqXHR = data.submit()
+        .error (result, status, jqXHR) ->
+          alert(result)
+
+    progress: (e, data) ->
+      if data.context
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        data.context.find('.bar').css('width', progress + '%')
