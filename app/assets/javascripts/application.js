@@ -17,5 +17,7 @@
 //= require jquery-file-upload/vendor/jquery.ui.widget
 //= require jquery-file-upload/jquery.iframe-transport
 //= require jquery-file-upload/jquery.fileupload
+//= require jquery-file-upload/jquery.fileupload-process
+//= require jquery-file-upload/jquery.fileupload-validate
 //= require turbolinks
 //= require_tree .

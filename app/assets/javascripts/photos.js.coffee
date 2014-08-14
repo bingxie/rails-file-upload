@@ -6,6 +6,22 @@ $ ->
   $('#new_photo').fileupload
     dataType: "script"
     autoUpload: true
+    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+    maxFileSize: 1024 * 1024
+    messages:
+      maxFileSize: 'File exceeds maximum allowed size of 1MB',
+
+  $('#new_photo').on 'fileuploadadd', (evt, data) ->
+    $this = $(this)
+    validation = data.process ->
+      $this.fileupload('process', data)
+
+    validation.done ->
+      data.submit()
+
+    validation.fail (data) ->
+      console.log('Upload error: ' + data.files[0].error)
+
     # add: (e, data) ->
     #   types = /(\.|\/)(gif|jpe?g|png)$/i
     #   file = data.files[0]
