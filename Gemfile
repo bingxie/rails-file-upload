@@ -49,4 +49,19 @@ gem 'rails-assets-jquery-file-upload'
 
 group :development do
   gem 'quiet_assets'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  # Rails panel
+  gem 'meta_request'
+end
+
+
+group :development, :test do
+  # Debug
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
