@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#new_photo').fileupload
+  $('.upload').find('#new_photo').fileupload
     dataType: "script"
   #   autoUpload: true
   #   acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
@@ -26,7 +26,7 @@ $ ->
       uploadErrors = [];
       types = /(\.|\/)(gif|jpe?g|png)$/i
       file = data.files[0]
-
+      console.log(file)
       if file.type.length && !(types.test(file.type) || types.test(file.name))
         alert('Image file type is not an accepted type.')
         uploadErrors.push('file type error')
