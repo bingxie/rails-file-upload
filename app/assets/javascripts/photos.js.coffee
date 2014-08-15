@@ -32,7 +32,7 @@ $ ->
         uploadErrors.push('file type error')
 
       if file.size > 5000000
-        alert('Image file size if too big.')
+        alert('Image file size is too big.')
         uploadErrors.push('file size error')
 
       if uploadErrors.length == 0
